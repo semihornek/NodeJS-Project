@@ -1,0 +1,9 @@
+node_modules
+images/*.jpg
+images/*.jpeg
+images/*.png
+data/invoices/*.pdf
+access.log
+package-lock.json
+server.*
+nodemon.json

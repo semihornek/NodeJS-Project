@@ -12,13 +12,15 @@ router.post(
   "/add-product",
   isAuth,
   [
-    body("title", "Your title should be naximum 40 characters!").trim().isString().isLength({ min: 3 }),
+    body("title", "Your title should be minimum 3 characters!").trim().isString().isLength({ min: 3 }),
 
     // body("imageUrl").isURL().withMessage("Please enter a valid image url!"),
 
     body("price", "Price shouldn't be empty!").isFloat(),
 
-    body("description").trim().isLength({ min: 5, max: 400 }),
+    body("description", "Description should be between 5 and 400 characters (including)")
+      .trim()
+      .isLength({ min: 5, max: 400 }),
   ],
   adminController.postAddProduct
 );
@@ -40,7 +42,9 @@ router.post(
 
     body("price", "Price shouldn't be empty!").isFloat(),
 
-    body("description").trim().isLength({ min: 5, max: 400 }),
+    body("description", "Description should be between 5 and 400 characters (including)")
+      .trim()
+      .isLength({ min: 5, max: 400 }),
   ],
   adminController.postEditProduct
 );
